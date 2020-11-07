@@ -1,19 +1,36 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { getCurrentDate } from '../../utils/getCurrentDate'
+import oops from '../../utils/oops.png';
 
 export const ContentComponent = ({ newsToShow, byCategory, byLatest }) => {
 
-    const { id } = useParams();
+    const { id, currentDate } = useParams();
 
     useEffect(() => {
-        byCategory(id);
-        byLatest(id);
-    }, [id]);
+        if (currentDate) {
+            return byLatest(currentDate);
+        } else if (id) {
+            return byCategory(id);
+        } else {
+            byLatest(getCurrentDate());
+        }
+    }, [id, currentDate])
 
 
     return (
-
         <>
+            {!newsToShow.length &&
+                <div className="card-deck mb-1">
+                    <div className="card text-dark">
+                        <img src={oops} className="card-img-top" alt="no hay nada" />
+                        <div className="card-body text-center">
+                            <h3 className="card-title">Oops! Something went wrong</h3>
+                            <p className="card-text mb-5">Try to find another news or select a category</p>
+                        </div>
+                    </div>
+                </div>
+            }
             {newsToShow.map((news, index) => {
                 return (
                     <div className="card-deck mb-1" key={index}>
@@ -32,9 +49,7 @@ export const ContentComponent = ({ newsToShow, byCategory, byLatest }) => {
                     </div>
                 )
             })}
-
         </>
-
     )
 }
 export default ContentComponent;

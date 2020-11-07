@@ -7,7 +7,7 @@ export const AppRoutes = () => {
     return (
         <main>
             <Switch>
-                <Route exact path="/" component={ContentContainer} />
+                <Route exact path="/:currentDate" component={ContentContainer} />
                 <Route path="/politics/:id" component={ContentContainer} />
                 <Route path="/international/:id" component={ContentContainer} />
                 <Route path="/technology/:id" component={ContentContainer} />

@@ -1,8 +1,6 @@
 
 
 export const getLatestNews = async (currentDate) => {
-    console.log(currentDate, 'estoy en el api');
-
     const url = `https://api.canillitapp.com/latest/${currentDate}?page=1`;
     const response = await fetch(url);
     const data = await response.json();

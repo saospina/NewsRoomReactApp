@@ -4,20 +4,9 @@ import ContentComponent from "./ContentComponent";
 import { ContentThunk } from "../../redux/thunks/Content.thunk";
 import { HomeThunk } from '../../redux/thunks/Home.thunk';
 
-/* const getVisibleNews = (content, lookup) => {
-  console.log(content, lookup);
-  if (content.length < 0) {
-    return lookup;
-  } else {
-    if (lookup.length < 0) {
-      return content;
-    }
-  }
-}; */
-//getVisibleNews(ContentReducer, LookupReducer)
-const mapStateToProps = ({ ContentReducer, LookupReducer }) => {
+const mapStateToProps = ({ ContentReducer }) => {
   return {
-    newsToShow: LookupReducer ? LookupReducer : ContentReducer 
+    newsToShow: ContentReducer
   };
 };
 

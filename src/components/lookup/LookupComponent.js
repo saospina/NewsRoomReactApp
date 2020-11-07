@@ -6,7 +6,6 @@ export const LookupComponent = ({ searchNews }) => {
 
     const handleChange = (event) => {
         event.preventDefault();
-        console.log(input.value);
         searchNews(input.value);
     };
 
