@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+
 import { getCurrentDate } from '../../utils/getCurrentDate'
-import oops from '../../utils/oops.png';
+import oops from './../../utils/oops.png';
 
 export const ContentComponent = ({ newsToShow, byCategory, byLatest }) => {
 
